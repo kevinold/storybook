@@ -48,6 +48,7 @@
     "changelog": "pr-log --sloppy --cherry-pick",
     "changelog:next": "pr-log --sloppy --since-prerelease",
     "coverage": "codecov",
+    "cypress:open": "cypress open",
     "danger": "danger",
     "dev": "concurrently --kill-others \"yarn dev:tsc\" \"yarn dev:babel\"",
     "dev:babel": "lerna exec --scope @storybook/* --parallel -- cross-env-shell node \\$LERNA_ROOT_PATH/scripts/watch-babel.js",
@@ -73,7 +74,7 @@
     "test": "node ./scripts/test.js",
     "test-latest-cra": "yarn --prefix --cwd lib/cli run test-latest-cra",
     "test:cli": "npm --prefix lib/cli run test",
-    "test:e2e-gui": "concurrently --success first --kill-others \"cypress open\" \"yarn serve-storybooks\""
+    "test:e2e-gui": "start-server-and-test 'yarn serve-storybooks' 8001 'cypress open'"
   },
   "husky": {
     "hooks": {
@@ -212,6 +213,7 @@
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "sort-package-json": "^1.21.0",
+    "start-server-and-test": "^1.10.6",
     "storybook-chromatic": "^3.0.0",
     "svelte": "^3.4.1",
     "svelte-jest": "^0.3.0",
